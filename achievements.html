@@ -1,0 +1,567 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>KIIT Robotics Society</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+		<link rel="icon" type="image/png" href="images/krslogoicon.png">
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="https://joaopereirawd.github.io/animatedModal.js/js/animatedModal.min.js"> </script>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			html {
+				scroll-behavior: smooth;
+			}
+			body:before {
+				content: "";
+				display: block;
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -10;
+				background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
+				background-size: cover;
+			}
+            #banner {
+				padding: 5em 2em 4.25em 2em;
+                background: none;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+				z-index: 10;
+            }
+			
+            #banner h2 {
+				color: white;
+				font-size: 32px;
+				margin-bottom: 0;
+            }
+			.logo > img {
+				height: 44px;
+				margin-bottom: -10px;
+			}
+
+			@media screen and (max-width: 600px) {
+				#banner {
+					padding: 5em 0.2em 4.25em 0.2em;
+				}
+				#banner h2 {
+					font-size: 20px;
+				}
+				.logo > img {
+					height: 34px;
+					margin-bottom: -5px;
+				}
+			}
+			@media screen and (max-width: 400px) {
+				#banner {
+					padding: 5em 0em 4.25em 0em;
+				}
+				#banner h2 {
+					font-size: 20px;
+				}
+				.logo > img {
+					height: 34px;
+					margin-bottom: -5px;
+				}
+			}
+            #banner h3 > span > b {
+                color: white;
+			}
+			
+			@media screen and (max-width: 1680px) {
+				#banner > .inner {
+					padding: 0px 10px;
+				}
+			}
+
+			#ac-table > tr > td {
+				font-weight: 600;
+			}
+
+			#ac-table > tr > td:nth-child(1) {
+				width: 20%;
+				border-right: solid 1px rgba(255, 255, 255, 0.125);
+				text-align: center;
+			}
+
+			#ac-table > tr > td:nth-child(2) {
+				width: 20%;
+				border-right: solid 1px rgba(255, 255, 255, 0.125);
+			}
+
+			#ac-table > tr > td:nth-child(3) {
+				width: 60%;
+				
+			}
+			@media screen and (max-width: 650px) {
+				#ac-table > tr > td {
+					padding: 0.2em;
+					font-size: 80%;
+					font-weight: 500;
+				}
+			}
+
+			#achievements-table {
+				opacity: 0;
+				animation: table 2s 2.3s;
+				animation-fill-mode: forwards;
+			}
+			@keyframes table {
+				from {opacity:0;}
+				to {opacity:1;}
+			}
+
+			/* background anim start */
+
+			.container.demo {
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left:0;
+				position: fixed;
+				margin: 0;
+			}
+
+			.large-header {
+				position: fixed;
+				width: 100%;
+				background: #111;
+				overflow: hidden;
+				background-size: cover;
+				background-position: center center;
+				z-index: 1;
+			}
+
+			.demo .large-header {
+				background: transparent;
+			}
+			/* background anim end */
+
+			/* Carousal Start */
+			.carousel {
+				display: flex;
+				overflow: hidden;
+				perspective-origin: 50% 50%;
+				transform-style: preserve-3d;
+				opacity: 0;
+			}
+
+			.carousel.in {
+				animation: in 0.1s ease-in both;
+			}
+
+			.carousel > img {
+				max-width: 100%;
+				width: 40%;
+				object-fit: contain;
+			}
+
+			@keyframes in {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+			/* Carousal End */
+
+		</style>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="is-preload">
+			<div class="container demo">
+				<div class="content">
+				<div id="large-header" class="large-header">
+					
+					<canvas id="demo-canvas"></canvas>
+				</div>
+				</div>
+			</div>
+		
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				<!-- Header -->
+				<header id="header" class="alt" style="z-index: 9000;">
+					<h1><a href="index.html">KIIT Robotics Society</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="aboutus.html">About us</a></li>
+								
+								<li><a href="events.html">Events</a></li>
+								<li><a href="members.html">Members</a></li>
+								
+								<li><a href="developers.html">Credits</a></li>
+								<li><a href="achievements.html">Achievements <span class="icon fa-gem"></span></a></li>
+								<li><a href="results.html">RECRUITMENT 2020</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Banner -->
+				<section id="banner">
+					<div class="inner">
+						<div class="logo"><img style="border-radius: 50%;" src="images/krslogo.jpg"><h2 style="display:inline">&nbsp KIIT ROBOTICS SOCIETY</h2></div>
+						<h3> <span><b>Achievements</span> </b></h3>
+					</div>
+					<!--TABLE-->
+					<table id="achievements-table">
+						<thead style="text-align: center; font-weight: 800;">
+							<td>Team Name</td>
+							<td>Members</td>
+							<td>Achievement</td>
+						</thead>
+
+						<tbody id="ac-table">
+							<!--<tr>				SAMPLE
+								<td>team A</td>
+								<td>m1,m2</td>
+								<td>Ach<br>hi</td>
+							</tr>-->
+						</tbody>
+					</table>
+
+					<div class="carousel" id="carousel">
+						<!-- Fill images -->
+					</div>
+
+				</section>
+				
+			</div>
+
+		
+			
+		<!-- Scripts -->
+		<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
+		<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
+		<script>
+			(function() {
+
+				var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
+
+				// Main
+				initHeader();
+				initAnimation();
+				addListeners();
+
+				function initHeader() {
+					width = window.innerWidth;
+					height = window.innerHeight;
+					target = {x: width/2, y: height/2};
+
+					largeHeader = document.getElementById('large-header');
+					largeHeader.style.height = height+'px';
+
+					canvas = document.getElementById('demo-canvas');
+					canvas.width = width;
+					canvas.height = height;
+					ctx = canvas.getContext('2d');
+
+					// create points
+					points = [];
+					for(var x = 0; x < width; x = x + width/20) {
+						for(var y = 0; y < height; y = y + height/20) {
+							var px = x + Math.random()*width/20;
+							var py = y + Math.random()*height/20;
+							var p = {x: px, originX: px, y: py, originY: py };
+							points.push(p);
+						}
+					}
+
+					// for each point find the 5 closest points
+					for(var i = 0; i < points.length; i++) {
+						var closest = [];
+						var p1 = points[i];
+						for(var j = 0; j < points.length; j++) {
+							var p2 = points[j]
+							if(!(p1 == p2)) {
+								var placed = false;
+								for(var k = 0; k < 5; k++) {
+									if(!placed) {
+										if(closest[k] == undefined) {
+											closest[k] = p2;
+											placed = true;
+										}
+									}
+								}
+
+								for(var k = 0; k < 5; k++) {
+									if(!placed) {
+										if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
+											closest[k] = p2;
+											placed = true;
+										}
+									}
+								}
+							}
+						}
+						p1.closest = closest;
+					}
+
+					// assign a circle to each point
+					for(var i in points) {
+						var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
+						points[i].circle = c;
+					}
+				}
+
+				// Event handling
+				function addListeners() {
+					if(!('ontouchstart' in window)) {
+						window.addEventListener('mousemove', mouseMove);
+					}
+					window.addEventListener('scroll', scrollCheck);
+					window.addEventListener('resize', resize);
+				}
+
+				function mouseMove(e) {
+					var posx = posy = 0;
+					if (e.pageX || e.pageY) {
+						posx = e.clientX;
+						posy = e.clientY;
+					}
+					else if (e.clientX || e.clientY)    {
+						posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+						posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+					}
+					target.x = posx;
+					target.y = posy;
+				}
+
+				function scrollCheck() {
+					if(document.body.scrollTop > height) animateHeader = false;
+					else animateHeader = true;
+				}
+
+				function resize() {
+					width = window.innerWidth;
+					height = window.innerHeight;
+					largeHeader.style.height = height+'px';
+					canvas.width = width;
+					canvas.height = height;
+				}
+
+				// animation
+				function initAnimation() {
+					animate();
+					for(var i in points) {
+						shiftPoint(points[i]);
+					}
+				}
+
+				function animate() {
+					if(animateHeader) {
+						ctx.clearRect(0,0,width,height);
+						for(var i in points) {
+							// detect points in range
+							if(Math.abs(getDistance(target, points[i])) < 4000) {
+								points[i].active = 0.3;
+								points[i].circle.active = 0.6;
+							} else if(Math.abs(getDistance(target, points[i])) < 20000) {
+								points[i].active = 0.1;
+								points[i].circle.active = 0.3;
+							} else if(Math.abs(getDistance(target, points[i])) < 40000) {
+								points[i].active = 0.02;
+								points[i].circle.active = 0.1;
+							} else {
+								points[i].active = 0;
+								points[i].circle.active = 0;
+							}
+
+							drawLines(points[i]);
+							points[i].circle.draw();
+						}
+					}
+					requestAnimationFrame(animate);
+				}
+
+				function shiftPoint(p) {
+					TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
+						y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
+						onComplete: function() {
+							shiftPoint(p);
+						}});
+				}
+
+				// Canvas manipulation
+				function drawLines(p) {
+					if(!p.active) return;
+					for(var i in p.closest) {
+						ctx.beginPath();
+						ctx.moveTo(p.x, p.y);
+						ctx.lineTo(p.closest[i].x, p.closest[i].y);
+						ctx.strokeStyle = 'rgba(156,217,249,'+ p.active+')';
+						ctx.stroke();
+					}
+				}
+
+				function Circle(pos,rad,color) {
+					var _this = this;
+
+					// constructor
+					(function() {
+						_this.pos = pos || null;
+						_this.radius = rad || null;
+						_this.color = color || null;
+					})();
+
+					this.draw = function() {
+						if(!_this.active) return;
+						ctx.beginPath();
+						ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
+						ctx.fillStyle = 'rgba(156,217,249,'+ _this.active+')';
+						ctx.fill();
+					};
+				}
+
+				// Util
+				function getDistance(p1, p2) {
+					return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
+				}
+
+				})();
+			</script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/bootstrap.min.js"></script>
+			<script>
+				// fetch achievement table data 
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.open( "GET", "achievements.json", false );
+				xmlHttp.send( null );
+				var bodytext = xmlHttp.responseText;
+				data_json=JSON.parse(bodytext);
+	
+				var ac_table = document.getElementById("ac-table");
+				var tr = [];
+				var td = [];
+				
+				$(data_json).each(function(i) {
+					tr[i] = document.createElement('tr');
+					td[i] = [];
+					td[i][0] = document.createElement('td');
+					td[i][1] = document.createElement('td');
+					td[i][2] = document.createElement('td');
+					td[i][0].innerHTML = data_json[i]['Name of the Group'];
+					td[i][1].innerHTML = data_json[i]['Members'].replace(',','<br>');
+					td[i][2].innerHTML = data_json[i]['Achievement Name']+'<br>';
+					td[i][2].innerHTML += data_json[i]['Description'];
+					tr[i].appendChild(td[i][0]);
+					tr[i].appendChild(td[i][1]);
+					tr[i].appendChild(td[i][2]);
+					ac_table.appendChild(tr[i]);
+				});
+	
+				// fetch achievement images
+				var carousel = document.getElementById("carousel");
+				var imglistt = [];
+				for(var list=1; list<=19; list++) {
+					imglistt[list] = document.createElement('img');
+					imglistt[list].src='images-achievements/'+list+'.jpg';
+					carousel.appendChild(imglistt[list]);
+				}
+				
+			</script>
+			<script>
+				/*
+				CAROUSAL SCRIPT
+				*/
+				const resizeObserver = new ResizeObserver(entries => {
+				for (const { target } of entries) {
+					if (target) refreshPerspective(target);
+				}
+				});
+
+				function initCarousel(carousel) {
+					// Fade in
+					carousel.classList.add("in");
+					
+					// Observe for changes to carousel's dimensions
+					resizeObserver.observe(carousel);
+
+					// Auto scroll slideshow
+					setInterval(() => {
+						var firstImage = [...carousel.children].reduce((prev, current) => (prev.style.order < current.style.order) ? prev : current);
+						if (firstImage.width < carousel.scrollLeft) {
+						// Move the first image back in queue when it's out of view
+						carousel.scrollLeft = carousel.scrollLeft - firstImage.width;
+						firstImage.style.order = carousel.children.length;
+						for (const image of [...carousel.children]) {
+							if (image != firstImage) image.style.order = image.style.order-1;
+						}
+						} else {
+							carousel.scrollLeft += 1;
+						}    
+					}, 10);
+				}
+
+				function refreshPerspective(carousel) {
+					const perspective = carousel.getBoundingClientRect().width / 2;
+					carousel.style.perspective = `${perspective}px`;
+
+					// Translate each image accordingly
+					{
+						let perspectiveThreshold = perspective / 4;
+						let prevZ = -1;
+						for (const [i, image] of [...carousel.children].entries()) {
+						image.dataset.y = image.dataset.y || Math.random();
+						image.dataset.z = image.dataset.z || Math.random();
+
+						let [y, z] = [
+							Math.floor(image.dataset.y * perspectiveThreshold) - (perspectiveThreshold / 2), 
+							Math.floor(image.dataset.z * perspectiveThreshold)
+						];
+
+						// Readjust z-translation if it's to close.
+						while (perspective > 100 && Math.abs(prevZ - z) < (perspectiveThreshold * 0.2)) {
+							image.dataset.z = Math.random();
+							z = Math.floor(image.dataset.z * perspectiveThreshold);
+						}
+
+						prevZ = z;
+						image.style.cssText = `
+					order: ${i};
+					transform: translate3d(0, ${y}px, ${z}px);
+					z-index: ${z};
+					`;
+						}
+					}
+
+					carousel.scrollLeft = 0;
+					return perspective;
+				}
+
+				(async () => {
+				// Using a for..of loop in case you want more carousels on page.
+				for (const carousel of [...document.querySelectorAll(".carousel")]) {
+					// Wait for all images to load before initializing the carousel
+					for (const image of [...carousel.children]) {
+					await new Promise(resolve => {
+						if (image.complete) resolve();
+						else image.onload = resolve;
+					});
+					}
+					
+					// Let's go
+					initCarousel(carousel);
+				}
+				})();
+			</script>
+	</body>
+</html>

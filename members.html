@@ -1,0 +1,552 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>KIIT Robotics Society</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+		<link rel="icon" type="image/png" href="images/krslogoicon.png">
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="https://joaopereirawd.github.io/animatedModal.js/js/animatedModal.min.js"> </script>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			html {
+				scroll-behavior: smooth;
+			}
+			body {
+				text-align: center;
+			}
+			body:before {
+				content: "";
+				display: block;
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -10;
+				background: linear-gradient(to bottom, rgba(117, 114, 113, 0.8) 10%, rgba(40, 49, 77, 0.8) 30%, rgba(29, 35, 71, 0.8) 50%, rgba(19, 25, 28, 0.8) 80%, rgba(15, 14, 14, .8) 100%), url('images-members/kiit.jpg');
+				background-size: cover;
+			}
+            #banner {
+                padding: 10em 0 4.75em 0 ;
+                background: none;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            #banner h2 {
+				color: white;
+            }
+            #banner h3 > span > b {
+                color: white;
+			}
+			
+			@media screen and (max-width: 1680px) {
+				#banner > .inner {
+					padding: 0px 10px;
+				}
+			}
+
+
+			.nav-link {
+				background-color: transparent !important;
+				color: white !important;
+			}
+
+			.card-title {
+				color: black !important;
+				text-align: center;
+			}
+			.card-text {
+				color: black !important;
+				text-align: center;
+				font-size: 14px;
+			}
+
+			.modal-content {
+				display: block;
+				margin: 2em auto;
+				max-width: 1000px;
+				padding: 10px;
+				background-color: transparent;
+				text-align: center;
+				border: 0;
+			}
+
+			[class*="close-"] {
+				border: 2px solid;
+				border-radius: 100%;
+				color: #FFF;
+				cursor: pointer;
+				display: block;
+				font-size: 1.75em;
+				height: 50px;
+				line-height: 50px;
+				margin: 2px 2px 2px auto;
+				overflow: hidden;
+				padding: 0;
+				position: relative;
+				width: 50px;
+			}
+
+			@media only screen and (min-width: 1024px) {
+				.modal-content {
+					padding: 0;
+				}
+			}
+
+			.fa {
+				display: inline-block;
+				font-size: inherit;
+				text-rendering: auto;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				transform: translate(0, 0);
+			}
+			.fa-remove:before, .fa-close:before, .fa-times:before {
+				content: "\f00d";
+			}
+
+
+			.profilecard {
+				background: #fff;
+				border-radius: 4px;
+				box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+				max-width: 90%;
+				display: flex;
+				flex-direction: row;
+				border-radius: 15px;
+				position: relative;
+				margin: auto !important;
+				background-color: black;
+				padding: 25px;
+			}
+			.profilecard h2 {
+				margin: 0;
+				padding: 0 1rem;
+			}
+			
+			.profilecard .title {
+				color: #96fbc4;
+				font-weight: bold;
+				font-size: 20px;
+			}
+			.profilecard .desc {
+			padding: 0.5rem 1rem;
+			font-size: 18px;
+			}
+			.profilecard .actions {
+			align-items: center;
+			padding: 0.5rem 1rem;
+			}
+
+			@media only screen and (min-width: 300px) {
+				.profilecard h2 {
+					font-size: 24px;
+				}
+				.profilecard .title {
+					font-size: 20px;
+				}
+				.profilecard .desc {
+					font-size: 18px;
+				}
+			}
+
+			.profilecard-text {
+				margin: auto;
+				background-color: black;
+			}
+
+			.actions > button {
+			border: none;
+			background: none;
+			font-size: 24px;
+			color: #8bc34a;
+			cursor: pointer;
+			transition:.5s;
+			}
+
+			#portfolio-img {
+				width: 300px;
+			}
+			@media only screen and (max-width:700px) {
+				#portfolio-img {
+					width: 200px;
+				}
+			}
+		</style>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="is-preload">
+		
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				<!-- Header -->
+				<header id="header" class="alt" style="z-index: 9000;">
+					<h1><a href="index.html">KIIT Robotics Society</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="aboutus.html">About us</a></li>
+								
+								<li><a href="events.html">Events</a></li>
+								<li><a href="members.html">Members</a></li>
+								
+								<li><a href="developers.html">Credits</a></li>
+								<li><a href="achievements.html">Achievements <span class="icon fa-gem"></span></a></li>
+								<li><a href="results.html">RECRUITMENT 2020</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<div class="logo"><img style="height:100px; border-radius: 50%;" src="images/krslogo.jpg"></div>
+							<h2>KIIT ROBOTICS SOCIETY</h2>
+                            <h3> <span><b>Presents the family </span> </b></h3>
+						</div>
+					</section>
+					<br><br><br>
+
+				<!-- Members Tabs -->
+					<div class="container" id="members-container">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs nav-justified" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#current">Current Members</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#alumni">Alumni</a>
+							</li>
+						</ul>
+					  
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div id="current" class="container tab-pane active"><br>
+
+								<!-- CURRENT MEMBERS -->
+								<div class="container">
+									<div class="row" id="cmembers-row">
+										<a style="padding: 5px; z-index: 100;" href="#2018" class="btn btn-primary">2018</a>
+									</div>
+									<!-- /.row -->
+								  
+								</div>
+								<!-- CURRENT MEMBERS END -->
+							</div>
+							<script>
+
+							</script>
+
+
+							<div id="alumni" class="container tab-pane fade"><br>
+								<div class="container">
+									<div class="row" id="amembers-row">
+										
+										
+									</div>
+										<!-- /.row -->
+								</div>
+									<!-- /.container -->
+								
+							</div>
+
+
+							<div id="animatedModal">
+								<div class="close-animatedModal"><span class="fa fa-close"></span></div>
+								<div class="modal-content">
+									
+									<div class="profilecard">
+
+										<div class="profilecard-text">
+											
+											<div class="title-total">   
+												<img style="border-radius: 10px;" id="portfolio-img" src="images-members/min/rupeshpal-01.jpg" alt="">
+												<h2 id="portfolio-name"></h2>
+												<div class="title" id="portfolio-domain"></div>
+												<div class="desc" id="portfolio-desc"></div>
+												<div class="actions">
+													<button id="github-btn"><i class="fa fa-github"></i></button>
+													<button id="linkedin-btn"><i class="fa fa-linkedin"></i></button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					
+
+			</div>
+			
+		<!-- Scripts -->
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/bootstrap.min.js"></script>
+			<script>
+				/*
+					current members script
+				*/
+				var portfolioi, portfolioj;
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.open( "GET", "members.json", false );
+				xmlHttp.send( null );
+				var bodytext = xmlHttp.responseText;
+				data_json=JSON.parse(bodytext);
+				var years = Object.keys(data_json);
+				
+				var carddiv = [];
+				var seccarddiv = [];
+				var cardimg = [];
+				var cardbody = [];
+				var cardtitle = [];
+				var cardtext = [];
+				var domaintext = [];
+				var profbutton = [];
+				var cmembers_row = document.getElementById('cmembers-row');
+				var amembers_row = document.getElementById('amembers-row');
+
+				$(years).each(function(i) {		// navigate years
+					carddiv[i] = [];
+					seccarddiv[i] =[];
+					cardimg[i] = [];
+					cardbody[i] =[];
+					cardtitle[i] = [];
+					cardtext[i] = [];
+					domaintext[i] = [];
+					profbutton[i] = [];
+
+				if(i!=2) {		// current members
+					
+					years_heading = document.createElement('div');
+					years_heading.className = 'col-sm-12';
+					years_heading.id = years[i];
+					years_heading.innerHTML = years[i];
+					$(years_heading).css('font-size','24px');
+					cmembers_row.appendChild(years_heading);
+					
+					/*
+					<div class="col-sm-6 col-md-4">
+						<div class="card  mb-3">
+							<!-- set a width on the image otherwise it will expand to full width -->
+							<img class="card-img-top img-fluid" loading="lazy" src="images-members/min/rupeshpal-01.jpg" alt="Card image cap" width="400">
+							<div class="card-body">
+								<h4 class="card-title">Rupesh Pal </h4>
+								<p class="card-text"> 
+									<span>IOT, Web D</span> <br>
+									<a class="btn btn-primary demo01" href="#animatedModal">open profile</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					*/
+					$(data_json[years[i]]).each(function(j) {		
+						//console.log(data_json[years[i]][j].name);
+						carddiv[i][j] = document.createElement('div');
+						carddiv[i][j].className = 'col-sm-6 col-md-3';
+						cmembers_row.appendChild(carddiv[i][j]);
+
+						seccarddiv[i][j] = document.createElement('div');
+						seccarddiv[i][j].className = 'card mb-3';
+						carddiv[i][j].appendChild(seccarddiv[i][j]);
+						
+						cardimg[i][j] = document.createElement('img');
+						cardimg[i][j].className = 'card-img-top img-fluid';
+						cardimg[i][j].src = 'images-members/min/'+data_json[years[i]][j].photo;
+						//$(cardimg[i][j]).attr('width','400');
+						$(cardimg[i][j]).attr('loading','lazy');
+						seccarddiv[i][j].appendChild(cardimg[i][j]);
+
+						cardbody[i][j] = document.createElement('div');
+						cardbody[i][j].className = 'card-body';
+						seccarddiv[i][j].appendChild(cardbody[i][j]);
+
+						cardtitle[i][j] = document.createElement('h4');
+						cardtitle[i][j].className = 'card-title';
+						cardtitle[i][j].innerHTML = data_json[years[i]][j].name;
+						cardbody[i][j].appendChild(cardtitle[i][j]);
+
+						cardtext[i][j] = document.createElement('p');
+						cardtext[i][j].className = 'card-text';
+						cardbody[i][j].appendChild(cardtext[i][j]);
+
+						domaintext[i][j] = document.createElement('span');
+						domaintext[i][j].innerHTML = data_json[years[i]][j].domain;
+						cardtext[i][j].appendChild(domaintext[i][j]);
+						cardtext[i][j].appendChild(document.createElement('br'));
+
+						profbutton[i][j] = document.createElement('a');
+						profbutton[i][j].className = 'btn btn-primary demo01';
+						profbutton[i][j].innerHTML = 'Open profile';
+						profbutton[i][j].href = '#animatedModal';
+						profbutton[i][j].setAttribute('data-i',i);
+						profbutton[i][j].setAttribute('data-j',j);
+						cardtext[i][j].appendChild(profbutton[i][j]);
+					});
+				}
+
+				else {
+					years_heading = document.createElement('div');
+					years_heading.className = 'col-sm-12';
+					years_heading.id = years[i];
+					years_heading.innerHTML = years[i];
+					$(years_heading).css('font-size','24px');
+					amembers_row.appendChild(years_heading);
+					
+					/*
+					<div class="col-sm-6 col-md-4">
+						<div class="card  mb-3">
+							<img class="card-img-top img-fluid" loading="lazy" src="images-members/min/rupeshpal-01.jpg" alt="Card image cap" width="400">
+							<div class="card-body">
+								<h4 class="card-title">Rupesh Pal </h4>
+								<p class="card-text"> 
+									<a class="btn btn-primary demo01" href="#animatedModal">open profile</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					*/
+					$(data_json[years[i]]).each(function(j) {		
+						//console.log(data_json[years[i]][j].name);
+						carddiv[i][j] = document.createElement('div');
+						carddiv[i][j].className = 'col-sm-6 col-md-3';
+						amembers_row.appendChild(carddiv[i][j]);
+
+						seccarddiv[i][j] = document.createElement('div');
+						seccarddiv[i][j].className = 'card mb-3';
+						carddiv[i][j].appendChild(seccarddiv[i][j]);
+						
+						cardimg[i][j] = document.createElement('img');
+						cardimg[i][j].className = 'card-img-top img-fluid';
+						cardimg[i][j].src = 'images-members/min/'+data_json[years[i]][j].photo;
+						$(cardimg[i][j]).attr('loading','lazy');
+						seccarddiv[i][j].appendChild(cardimg[i][j]);
+
+						cardbody[i][j] = document.createElement('div');
+						cardbody[i][j].className = 'card-body';
+						seccarddiv[i][j].appendChild(cardbody[i][j]);
+
+						cardtitle[i][j] = document.createElement('h4');
+						cardtitle[i][j].className = 'card-title';
+						cardtitle[i][j].innerHTML = data_json[years[i]][j].name;
+						cardbody[i][j].appendChild(cardtitle[i][j]);
+
+						cardtext[i][j] = document.createElement('p');
+						cardtext[i][j].className = 'card-text';
+						cardbody[i][j].appendChild(cardtext[i][j]);
+
+						profbutton[i][j] = document.createElement('a');
+						profbutton[i][j].className = 'btn btn-primary demo01';
+						profbutton[i][j].innerHTML = 'Open profile';
+						profbutton[i][j].href = '#animatedModal';
+						profbutton[i][j].setAttribute('data-i',i);
+						profbutton[i][j].setAttribute('data-j',j);
+						cardtext[i][j].appendChild(profbutton[i][j]);
+					});
+				}
+				});
+				
+			</script>
+
+
+			<script>
+				/*
+					portfolio script
+				*/
+				$(document).ready(function() {
+					$('.demo01').click(function(){
+						portfolioi = $(this).attr('data-i');
+						portfolioj = $(this).attr('data-j');
+						$('#portfolio-img').hide();
+						$('#portfolio-img').attr('src','images-members/min/'+data_json[years[portfolioi]][portfolioj].photo);
+						$('#portfolio-img').show();
+
+						$('#portfolio-name').html(data_json[years[portfolioi]][portfolioj].name);
+						if(portfolioi!=2) {		// if not alumni
+							$('#portfolio-domain').html("Domains: "+data_json[years[portfolioi]][portfolioj].domain);
+							$('#portfolio-desc').html(data_json[years[portfolioi]][portfolioj].desc);
+							$('#portfolio-domain').show();
+							$('#portfolio-desc').show();
+						}
+						else {
+							$('#portfolio-desc').html(data_json[years[portfolioi]][portfolioj].comment);
+							$('#portfolio-domain').hide();
+							//$('#portfolio-desc').hide();
+							$('#portfolio-desc').show();
+						}
+
+						// show/hide github
+						if(data_json[years[portfolioi]][portfolioj].github=="") {
+							$('#github-btn').hide();
+						}
+						else {
+							$('#github-btn').show();
+							$('#github-btn').click(function(){
+								//window.location.href = data_json[years[portfolioi]][portfolioj].github;	// open in same tab
+								window.open(data_json[years[portfolioi]][portfolioj].github,'_blank')		// open in another tab
+							});
+						}
+
+						// show/hide linkedin
+						if(data_json[years[portfolioi]][portfolioj].linkedin=="") {
+							$('#linkedin-btn').hide();
+						}
+						else {
+							$('#linkedin-btn').show();
+							$('#linkedin-btn').click(function(){
+								//window.location.href = data_json[years[portfolioi]][portfolioj].linkedin;	// open in same tab
+								window.open(data_json[years[portfolioi]][portfolioj].linkedin,'_blank')		// open in another tab
+							});
+						}
+
+						$('#header').hide();
+					});
+
+					$(".demo01").animatedModal({
+						animatedIn: 'zoomIn',
+						animatedOut: 'bounceOut',
+						color: '#39BEB9',
+						beforeOpen: function() {
+							var children = $(".thumb");
+							var index = 0;
+							function addClassNextChild() {
+								if (index == children.length) return;
+								children.eq(index++).show().velocity("transition.expandIn", {
+									opacity: 1,
+									stagger: 250
+								});
+								window.setTimeout(addClassNextChild, 200);
+							}
+							addClassNextChild();
+						},
+						afterClose: function() {
+							$(".thumb").hide();
+							$('#header').show();
+						}
+					});
+				
+				}); // end document ready
+			
+			</script>
+	</body>
+</html>

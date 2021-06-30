@@ -1,0 +1,789 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>KIIT Robotics Society</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css">
+		<link rel="icon" type="image/png" href="images/krslogoicon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			body {
+				margin: 0px;
+				overflow-x: hidden;
+			}
+
+			#one, #two, #three {
+				margin-left: 10000px;
+			}
+			@import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
+html {
+  position: relative;
+  overflow-x: hidden !important;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.icon-comment {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.background:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, rgba(209, 0, 42, 0.6) 0%, #0E5DC4 100%);
+  opacity: 0.9;
+}
+.background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.item-bg {
+  width: 300px;
+  height: 0px;
+  position: absolute;
+  top: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 26px 6px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: all .3s;
+  left: -30px;
+}
+.item-bg.active {
+  left: 0;
+  top: 0;
+  opacity: 1;
+}
+
+.news-slider {
+  z-index: 2;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+}
+@media screen and (max-width: 1300px) {
+  .news-slider {
+    max-width: 1000px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .news-slider {
+    margin-top: 45px;
+  }
+}
+.news-slider__wrp {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+.news-slider__item {
+  width: 400px;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 992px) {
+  .news-slider__item {
+    width: 300px;
+  }
+}
+.news-slider__item.swiper-slide {
+  opacity: 0;
+  pointer-events: none;
+  transition: all .3s;
+}
+.news-slider__item.swiper-slide-active, .news-slider__item.swiper-slide-prev, .news-slider__item.swiper-slide-next {
+  opacity: 1;
+  pointer-events: auto;
+}
+.news-slider__ctr {
+  position: relative;
+  z-index: 12;
+}
+.news-slider__arrow {
+  border: none;
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 26px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: 12;
+  cursor: pointer;
+  outline: none !important;
+}
+.news-slider__arrow:active {
+	background-color: azure;
+  outline: none !important;
+}
+.news-slider__arrow .icon-font {
+  display: inline-flex;
+}
+.news-slider__arrow.news-slider-prev {
+  left: 15px;
+  transform: translateY(-50%);
+}
+.news-slider__arrow.news-slider-next {
+  right: 15px;
+  transform: translateY(-50%);
+}
+.news-slider__pagination {
+  text-align: center;
+  margin-top: 5px;
+}
+.news-slider__pagination .swiper-pagination-bullet {
+  width: 13px;
+  height: 10px;
+  display: inline-block;
+  background: #fff;
+  opacity: .2;
+  margin: 0 5px;
+  border-radius: 20px;
+  transition: opacity .5s, background-color .5s, width .5s;
+  transition-delay: .5s, .5s, 0s;
+}
+.news-slider__pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #ffffff;
+  width: 100px;
+  transition-delay: 0s;
+}
+@media screen and (max-width: 576px) {
+  .news-slider__pagination .swiper-pagination-bullet-active {
+    width: 70px;
+  }
+}
+.news__item {
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
+  display: block;
+  transition: all .3s;
+}
+@media screen and (min-width: 800px) {
+  .news__item:hover {
+    color: #222222;
+    transition-delay: .1s;
+  }
+  .news__item:hover .news-date, .news__item:hover .news__title, .news__item:hover .news__txt {
+    opacity: 1;
+    transition-delay: .1s;
+  }
+  .news__item:hover .news__img {
+    box-shadow: none;
+  }
+}
+.news__item.active {
+  color: #fff;
+}
+.news__item.active .news-date, .news__item.active .news__title, .news__item.active .news__txt {
+  opacity: 1;
+}
+.news__item.active .news__img {
+  box-shadow: none;
+}
+@media screen and (max-width: 992px) {
+  .news__item {
+    padding: 30px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .news__item {
+    padding: 20px;
+  }
+}
+.news__title {
+  font-size: 25px;
+  font-weight: 500;
+  opacity: .7;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  transition: opacity .3s;
+}
+@media screen and (max-width: 576px) {
+  .news__title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+}
+.news__txt {
+  margin: 10px 0;
+  line-height: 1.6em;
+  font-size: 15px;
+  opacity: .7;
+  transition: opacity .3s;
+}
+.news__img {
+  border-radius: 10px;
+  box-shadow: 0 6px 26px 6px rgba(0, 0, 0, 0.25);
+  height: 100%;
+  margin-top: 30px;
+  width: 100%;
+  transition: all .3s;
+  transform-origin: 0% 0%;
+}
+@media screen and (max-width: 576px) {
+  .news__img {
+    margin-top: 20px;
+  }
+}
+.news__img img {
+  max-width: 100%;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+		</style>
+		<script>
+			var one, two, three;
+			document.onscroll = function() {animation()};
+			function animation() {				
+				one =  document.getElementById("one");
+				two =  document.getElementById("two");
+				three =  document.getElementById("three");
+				if(one.getBoundingClientRect().top + 50 - window.innerHeight < 0) {
+					one.style.marginLeft = "0px";
+					one.classList.add('animated', 'fadeInRight');
+				}
+				if(two.getBoundingClientRect().top + 50 - window.innerHeight < 0) {
+					two.style.marginLeft = "0px";
+					two.classList.add('animated', 'fadeInLeft');
+				}
+				if(three.getBoundingClientRect().top + 50 - window.innerHeight < 0) {
+					three.style.marginLeft = "0px";
+					three.classList.add('animated', 'fadeInRight');
+				}
+			}
+
+			function bodyloadanimation() {
+				one =  document.getElementById("one");
+				two =  document.getElementById("two");
+				three =  document.getElementById("three");
+				setTimeout(function(){ 
+					if(one.getBoundingClientRect().top + 50 - window.innerHeight < 0) {
+						one.style.marginLeft = "0px";
+						one.classList.add('animated', 'fadeInRight');
+					}	
+				}, 1500);
+
+				setTimeout(function(){ 
+					if(two.getBoundingClientRect().top + 50 - window.innerHeight < 0) {
+						two.style.marginLeft = "0px";
+						two.classList.add('animated', 'fadeInLeft');
+					}
+				}, 2500);
+
+				setTimeout(function(){ 
+					if(three.getBoundingClientRect().top + 50 - window.innerHeight < 0) {
+						three.style.marginLeft = "0px";
+						three.classList.add('animated', 'fadeInRight');
+					}
+				}, 3500);
+			}
+		</script>
+	</head>
+	<body class="is-preload" onload="bodyloadanimation()">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				<!-- Header -->
+				<header id="header" class="alt">
+					<h1><a href="index.html">KIIT Robotics Society</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="aboutus.html">About us</a></li>
+								
+								<li><a href="events.html">Events</a></li>
+								<li><a href="members.html">Members</a></li>
+								
+								<li><a href="developers.html">Credits</a></li>
+								<li><a href="achievements.html">Achievements <span class="icon fa-gem"></span></a></li>
+								<li><a href="results.html">RECRUITMENT 2020</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<div class="logo">
+								<img style="height:80px; border-radius: 50%;" src="images/krslogo.jpg">
+								<img style="height:80px; border-radius: 50%;" src="images/kiitlogo.jpg">
+								<img style="height:80px; border-radius: 50%;" src="images/ksaclogo.png">
+							</div>
+							<h2>KIIT ROBOTICS SOCIETY</h2>
+							<p>&nbsp;The place for innovations.</p>
+						</div>
+					</section>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+
+						<!-- One -->
+							<section id="one" class="wrapper spotlight style1">
+								<div class="inner">
+									<i class="image"><img src="images/card1.jpg" alt="" /></i>
+									<div class="content">
+										<h2 class="major"> Progression is Passion</h2>
+										<p class="major-subhead">We here at KIIT Robotics Society are made of ideas and initiatives that make a difference. Join us and be a part of this Change</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two" class="wrapper alt spotlight style2">
+								<div class="inner">
+									<i class="image"><img src="images/card2.jpg" alt="" /></i>
+									<div class="content">
+										<h2 class="major">Ideas that Enlighten</h2>
+										<p class="major-subhead">We here at KIIT Robotics Society are continuously nurturing impressive ideas hosting various events on diverse technical topics ranging from Machine Learning, Web Development, IOT, Robotics, Embedded Systems and processes and a lot more. We partner with various reputed organization to bring you the best expertise in the market</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Three -->
+							<section id="three" class="wrapper spotlight style3">
+								<div class="inner">
+									<i class="image"><img src="images/card3.jpg" alt="" /></i>
+									<div class="content">
+										<h2 class="major">Unmatched Projects</h2>
+										<p class="major-subhead">Our team of young innovators and developers constantly develops innovative projects that are bound to get you awestruck, thus we have the some of best project setups accross domains. Check them out and we assure, you won't regret</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Four -->
+							<section id="four" class="wrapper alt style1">
+								<div class="inner">
+									<h2 class="major">Our Faculty coordinators</h2>
+									<p class="major-subhead">KIIT Robotics Society is a student run organization managed under the guidance of our Faculty Coordinators .</p>
+									<section class="features">
+										<article>
+											<a href="" class="image"><img src="images/Nirmal-K.-Rout.jpg" alt="" /></a>
+											<h3 class="major">Dr.Nirmal K. Rout</h3>
+											<p>Senior Faculty Advisor</p>
+											
+										</article>
+										<article>
+											<a href="" class="image"><img src="images/Dr-Shyam.jpg" alt="" /></a>
+											<h3 class="major">Dr.Shyam Sundar Behura</h3>
+											<p>Director KSAC </p>
+											<!--<b><i> Message from faculty:- </i></b> Robotics Society has been proactive in instilling the culture of research and development in the field of Robotics from the day of its inception.  The members have been doing a great job in learning new technologies and sharing with others.  They have been very successful in the events they have participated. I am really happy to see the commitment and dedication and wish the KRS team would work to take their society to the next level.-->
+										</article>
+										<article>
+											<a href="" class="image"><img src="images/Dr.-Vimal-Shrivastava-Vimal-Kumar-Shrivastava.jpg" alt="" /></a>
+											<h3 class="major">Dr.Vimal K. Shrivastava</h3>
+											<p>Faculty Co-Ordinator </p>
+											
+										</article>
+										<article>
+											<a href="" class="image"><img src="images/Dr.-Mano-Ranjan-Kumar-Mano-Ranjan-Kumar.jpg" alt="" /></a>
+											<h3 class="major">Dr.Mano Ranjan Kumar</h3>
+											<p>Faculty Co-Ordinator </p>
+											
+										</article>
+										<article>
+											<a href="" class="image"><img src="images/NAGESWARA-RAO-BUDIPI.jpg" alt="" /></a>
+											<h3 class="major">Prof.Nageswara Rao Budipi</h3>
+											<p> Faculty Co-Ordinator</p>
+											
+										</article>
+									</section>
+								</div>
+							</section>
+
+					
+
+					<h2 style="text-align: center;">Alumni Comments</h2>
+<div class="wrapper-comment">
+
+	
+	<div class="item-bg"></div>
+  
+	<div class="news-slider">
+	  <div class="news-slider__wrp swiper-wrapper" id="comment-div">
+		
+		<!--<div class="news-slider__item swiper-slide">
+		  <a class="news__item">
+			<div class="news__title">
+			  Lorem Ipsum Dolor Sit Amed
+			</div>
+  
+			<p class="news__txt">
+			  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+			</p>
+  
+			<div class="news__img">
+			  <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537132205/news-slider/item-2.jpg" alt="news">
+			</div>
+		  </a>
+		</div>-->
+  
+	  </div>
+  
+	  <div class="news-slider__ctr">
+  
+		<div class="news-slider__arrows">
+		  <button class="news-slider__arrow news-slider-prev">
+			<span class="icon-font">
+			  <svg class="icon-comment icon-arrow-left"><use xlink:href="#icon-arrow-left"></use></svg>
+			</span>
+		  </button>
+		  <button class="news-slider__arrow news-slider-next">
+			<span class="icon-font">
+			  <svg class="icon-comment icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg>
+			</span>
+		  </button>
+		</div>
+  
+		<div class="news-slider__pagination"></div>
+  
+	  </div>
+  
+	</div>
+  
+  </div>
+  
+  <svg hidden="hidden">
+	<defs>
+	  <symbol id="icon-arrow-left" viewBox="0 0 32 32">
+		<title>arrow-left</title>
+		<path d="M0.704 17.696l9.856 9.856c0.896 0.896 2.432 0.896 3.328 0s0.896-2.432 0-3.328l-5.792-5.856h21.568c1.312 0 2.368-1.056 2.368-2.368s-1.056-2.368-2.368-2.368h-21.568l5.824-5.824c0.896-0.896 0.896-2.432 0-3.328-0.48-0.48-1.088-0.704-1.696-0.704s-1.216 0.224-1.696 0.704l-9.824 9.824c-0.448 0.448-0.704 1.056-0.704 1.696s0.224 1.248 0.704 1.696z"></path>
+	  </symbol>
+	  <symbol id="icon-arrow-right" viewBox="0 0 32 32">
+		<title>arrow-right</title>
+		<path d="M31.296 14.336l-9.888-9.888c-0.896-0.896-2.432-0.896-3.328 0s-0.896 2.432 0 3.328l5.824 5.856h-21.536c-1.312 0-2.368 1.056-2.368 2.368s1.056 2.368 2.368 2.368h21.568l-5.856 5.824c-0.896 0.896-0.896 2.432 0 3.328 0.48 0.48 1.088 0.704 1.696 0.704s1.216-0.224 1.696-0.704l9.824-9.824c0.448-0.448 0.704-1.056 0.704-1.696s-0.224-1.248-0.704-1.664z"></path>
+	  </symbol>
+	</defs>
+  </svg>
+</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<h2 class="major">Get in touch</h2>
+							<p>Do Submit your valuable feedback. We go through each one of them. We take only 1 feedback from each email id</p>
+							<form>
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="4"></textarea>
+									</div>
+								</div>
+								
+								<input type="button" value="Send Message" onclick="writeData()" />
+							</form>
+							<ul class="contact">
+								<li class="icon solid fa-home">
+									KIIT Robotics Society<br/>
+									Registered under KSAC, KIIT University<br/>
+									Odisha 751024
+								</li>
+								
+								<li class="icon solid fa-envelope"><a href="mailto:robotics.society@kiit.ac.in">Send an email</a></li>
+								<li class="icon brands fa-twitter"><a href="https://mobile.twitter.com/kiit_krs">Twitter</a></li>
+								<li class="icon brands fa-facebook-f"><a href="https://www.facebook.com/kiitroboticssociety/">Facebook</a></li>
+								<li class="icon brands fa-instagram"><a href="https://instagram.com/kiit_robotics.society">Instagram</a></li>
+							</ul>
+							
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			
+			<!-- The core Firebase JS SDK is always required and must be listed first -->
+			<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+			<!-- TODO: Add SDKs for Firebase products that you want to use
+				https://firebase.google.com/docs/web/setup#available-libraries -->
+			<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+			<script defer>				
+				// Your web app's Firebase configuration
+				// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+				var firebaseConfig = {
+					apiKey: "AIzaSyAeBAYGd0rT7x_J3M6PxZ-13yLhG3R7yPc",
+					authDomain: "krsweb.firebaseapp.com",
+					databaseURL: "https://krsweb.firebaseio.com",
+					projectId: "krsweb",
+					storageBucket: "krsweb.appspot.com",
+					messagingSenderId: "761306415692",
+					appId: "1:761306415692:web:263fe7fb8c7e28d4352ae9",
+					measurementId: "G-TEVQ1KBWX7"
+				};
+				// Initialize Firebase
+				firebase.initializeApp(firebaseConfig);
+				firebase.analytics();
+	
+				function writeData() {
+					var viewerName = document.getElementById("name").value;
+					var viewerEmail = document.getElementById("email").value;
+					var viewerMessage = document.getElementById("message").value;
+					viewerEmail = viewerEmail.replace('.','');
+						firebase.database().ref(viewerEmail).set({
+							name: viewerName,
+							email: viewerEmail,
+							message: viewerMessage
+						}, function(error) {
+								if (error) {
+									alert("Connection Problem");
+								} else {
+									alert("Feedback Recorded");
+								}
+							}
+						);
+					
+				}
+			</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+<script>
+	// LOAD COMMENTS FROM JSON
+	/*<div class="news-slider__item swiper-slide">
+		<a class="news__item">
+			<div class="news__title">	name	</div>
+			<p class="news__txt">	comment		</p>
+			<div class="news__img">
+			  	<img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537132205/news-slider/item-2.jpg" alt="news">
+			</div>
+		</a>
+	</div>*/
+	var comment_div = document.getElementById("comment-div");
+	var news_slider = [];
+	var news_item = [];
+	var news_title = [];
+	var news_txt = [];
+	var news_img = [];
+	var img = [];
+
+	var news_txt_height = 0; // hold the max height
+
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET", "members.json", false );
+	xmlHttp.send( null );
+	var bodytext = xmlHttp.responseText;
+	data_json=JSON.parse(bodytext);
+	var years = Object.keys(data_json);		
+
+	$(years).each(function(i) {
+		if(i==2) {
+			$(data_json[years[i]]).each(function(j) {
+				news_slider[j] = document.createElement('div');
+				news_slider[j].className = "news-slider__item swiper-slide";
+				comment_div.appendChild(news_slider[j]);
+
+				news_item[j] = document.createElement('a');
+				news_item[j].className = "news__item";
+				news_slider[j].appendChild(news_item[j]);
+
+				news_title[j] = document.createElement('div');
+				news_title[j].className = "news__title";
+				news_title[j].innerHTML = data_json[years[i]][j].name;
+				news_item[j].appendChild(news_title[j]);
+
+				news_txt[j] = document.createElement('p');
+				news_txt[j].className = "news__txt";
+				news_txt[j].innerHTML = data_json[years[i]][j].comment;
+				news_item[j].appendChild(news_txt[j]);
+				if($(news_txt[j]).height()>news_txt_height) {
+					news_txt_height = $(news_txt[j]).height();
+					console.log(news_txt_height);
+				}
+
+				news_img[j] = document.createElement('div');
+				news_img[j].className = "news__img";
+				news_item[j].appendChild(news_img[j]);
+
+				img[j] = document.createElement('img');
+				img[j].src = 'images-members/min/'+data_json[years[i]][j].photo;
+				news_img[j].appendChild(img[j]);
+			});
+			$('.news__txt').css('min-height',news_txt_height+'px');
+		}
+	});
+</script>
+<script>
+    var bg = document.querySelector(".item-bg");
+var items = document.querySelectorAll(".news__item");
+var item = document.querySelector(".news__item");
+
+function cLog(content) {
+  console.log(content);
+}
+
+if ($(window).width() > 800) {
+  $(document).on("mouseover", ".news__item", function (_event, _element) {
+    var newsItem = document.querySelectorAll(".news__item");
+    newsItem.forEach(function (element, index) {
+      element.addEventListener("mouseover", function () {
+        var x = this.getBoundingClientRect().left;
+        var y = this.getBoundingClientRect().top;
+        var width = this.getBoundingClientRect().width;
+        var height = this.getBoundingClientRect().height;
+
+        //$(".item-bg").addClass("active");
+        $(".news__item").removeClass("active");
+         $('.news__item').removeClass('active');
+
+        bg.style.width = width + "px";
+        bg.style.height = height + "px";
+        bg.style.transform = "translateX(" + x + "px ) translateY(" + y + "px)";
+      });
+
+      element.addEventListener("mouseleave", function () {
+        //$(".item-bg").removeClass("active");
+        $(".news__item").removeClass("active");
+      });
+    });
+  });
+}
+
+var swiper = new Swiper(".news-slider", {
+  effect: "coverflow",
+  grabCursor: true,
+  loop: true,
+  centeredSlides: true,
+  keyboard: true,
+  spaceBetween: 0,
+  slidesPerView: "auto",
+  speed: 300,
+  coverflowEffect: {
+    rotate: 10,
+    stretch: 0,
+    depth: 0,
+    modifier: 3,
+    slideShadows: false
+  },
+  breakpoints: {
+    480: {
+      spaceBetween: 0,
+      centeredSlides: true
+    }
+  },
+  simulateTouch: true,
+  navigation: {
+    nextEl: ".news-slider-next",
+    prevEl: ".news-slider-prev"
+  },
+  pagination: {
+    el: ".news-slider__pagination",
+    clickable: true
+  },
+  on: {
+    init: function () {
+      var activeItem = document.querySelector(".swiper-slide-active");
+
+      var sliderItem = activeItem.querySelector(".news__item");
+
+      $(".swiper-slide-active .news__item").addClass("active");
+
+      var x = sliderItem.getBoundingClientRect().left;
+      var y = sliderItem.getBoundingClientRect().top;
+      var width = sliderItem.getBoundingClientRect().width;
+      var height = sliderItem.getBoundingClientRect().height;
+
+      //$(".item-bg").addClass("active");
+
+      //bg.style.width = width + "px";
+      //bg.style.height = height + "px";
+      bg.style.transform = "translateX(" + x + "px ) translateY(" + y + "px)";
+    }
+  }
+});
+
+swiper.on("touchEnd", function () {
+  $(".news__item").removeClass("active");
+  //$(".swiper-slide-active .news__item").addClass("active");
+});
+
+swiper.on("slideChange", function () {
+  $(".news__item").removeClass("active");
+});
+
+swiper.on("slideChangeTransitionEnd", function () {
+  $(".news__item").removeClass("active");
+  var activeItem = document.querySelector(".swiper-slide-active");
+
+  var sliderItem = activeItem.querySelector(".news__item");
+
+  //$(".swiper-slide-active .news__item").addClass("active");
+
+  var x = sliderItem.getBoundingClientRect().left;
+  var y = sliderItem.getBoundingClientRect().top;
+  var width = sliderItem.getBoundingClientRect().width;
+  var height = sliderItem.getBoundingClientRect().height;
+
+  //$(".item-bg").addClass("active");
+
+  bg.style.width = width + "px";
+  bg.style.height = height + "px";
+  bg.style.transform = "translateX(" + x + "px ) translateY(" + y + "px)";
+});
+
+  </script>
+			
+	</body>
+</html>

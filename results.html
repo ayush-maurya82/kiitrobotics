@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>KIIT Robotics Society</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+		<link rel="icon" type="image/png" href="images/krslogoicon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			body {
+				overflow-x: hidden;
+			}
+
+			#one, #two, #three {
+				margin-left: 10000px;
+			}
+
+			#wrapper {
+				opacity:0;
+				animation: opac 2s 1.2s forwards;
+			}
+			@keyframes opac {
+				from {opacity: 0;}
+				to {opacity: 1;}
+			}
+
+			.wrapper {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				<!-- Header -->
+				<header id="header" class="alt">
+					<h1><a href="index.html">KIIT Robotics Society</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="aboutus.html">About us</a></li>
+								<li><a href="events.html">Events</a></li>
+								<li><a href="members.html">Members</a></li>
+								<li><a href="developers.html">Credits</a></li>
+                                <li><a href="achievements.html">Achievements <span class="icon fa-gem"></span></a></li>
+                                <li><a href="results.html">RECRUITMENT 2020</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<div class="logo">
+								<img style="height:100px; border-radius: 50%;" src="images/krslogo.jpg">
+								<h2>KIIT ROBOTICS SOCIETY</h2>
+                                <p>We extend our heartiest welcome to all our new members!!!</p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+
+						<div class="wrapper">
+                            <div class="inner">
+                                <h2 class="major">KIIT ROBOTICS SOCIETY RECRUITMENT 2020</h2>
+                                <table>
+                                    <tbody id="table-recruitment2020">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Roll number</th>
+                                            <th>Year</th>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<ul class="contact">
+								<li class="icon solid fa-home">
+									KIIT Robotics Society<br />
+									Registered by KSAC, KIIT University<br />
+									Odisha 751024
+								</li>
+
+								<li class="icon solid fa-envelope"><a href="mailto:robotics.society@kiit.ac.in">Email</a></li>
+								<li class="icon brands fa-twitter"><a href="https://mobile.twitter.com/kiit_krs">Twitter</a></li>
+								<li class="icon brands fa-facebook-f"><a href="https://www.facebook.com/kiitroboticssociety/">Facebook</a></li>
+								<li class="icon brands fa-instagram"><a href="https://instagram.com/kiit_robotics.society">Instagram</a></li>
+							</ul>
+						</div>
+					</section>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script>
+                var xmlHttp = new XMLHttpRequest();
+				xmlHttp.open( "GET", "results.json", false );
+				xmlHttp.send( null );
+				var bodytext = xmlHttp.responseText;
+				data_json=JSON.parse(bodytext);
+				var result_head = Object.keys(data_json);
+
+                var name;
+                var roll;
+                var year;
+                var container;
+                var results_table = document.getElementById("table-recruitment2020");
+                $(data_json[result_head[0]]).each(function(i) {
+                    var name;
+                    var roll;
+                    var year;
+                    var container;
+                    container = document.createElement('tr');
+                    name = document.createElement('td');
+                    roll = document.createElement('td');
+                    year = document.createElement('td');
+
+                    $(name).html(data_json[result_head[0]][i].Name);
+                    $(roll).html(data_json[result_head[0]][i].Roll);
+                    $(year).html(data_json[result_head[0]][i].Year);
+                    
+                    container.appendChild(name);
+                    container.appendChild(roll);
+                    container.appendChild(year);
+                    results_table.appendChild(container);
+                });
+            </script>
+	</body>
+</html>

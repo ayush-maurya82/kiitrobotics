@@ -1,0 +1,539 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>KIIT Robotics Society</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="icon" type="image/png" href="images/krslogoicon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			#banner {
+				padding-top: 20px;
+			}
+
+			.logo > h2 {
+				font-size: 20px !important;
+			}
+
+			#wrapper > h2 {
+				text-align: center;
+			}
+
+			.wrapper-prof {
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: center;
+				margin-bottom: 50px;
+			}
+
+			.card {
+				width: 280px;
+				height: 280px;
+				margin: 1em;
+				perspective: 1500px;
+			}
+			.card .content {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				transform-style: preserve-3d;
+				transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+			}
+
+			.more {
+				display: none;
+			}
+			.more:checked ~ .content {
+				transform: rotateY(180deg);
+			}
+
+			.front, .back {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				backface-visibility: hidden;
+				transform-style: preserve-3d;
+				border-radius: 6px;
+			}
+			.front .inner, .back .inner {
+				height: 100%;
+				display: grid;
+				padding: 1.5em;
+				transform: translateZ(80px) scale(0.94);
+			}
+
+			.front {
+				background-color: #fff;
+				background-size: cover;
+				background-position: center center;
+			}
+			.front:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: block;
+				border-radius: 6px;
+				backface-visibility: hidden;
+			}
+			.front .inner {
+				grid-template-rows: 80fr 1fr 1fr 2fr 1fr;
+				justify-items: center;
+			}
+			.front h3 {
+				grid-row: 2;
+				margin-bottom: 0.3em;
+				text-transform: uppercase;
+				letter-spacing: 3px;
+				color: #fff;
+				text-shadow: 0 0 10px blue,
+								0 0 5px red;
+			}
+			
+			.back {
+				transform: rotateY(180deg);
+				background-color: #fff;
+				border: 2px solid #f0f0f0;
+			}
+			.back .inner {
+				grid-template-rows: 1fr 2fr 1fr 2fr 50fr 1fr 1fr;
+				grid-column-gap: 0.8em;
+				justify-items: center;
+			}
+			.back .info {
+				position: relative;
+				display: flex;
+				align-items: center;
+				color: #355cc9;
+				grid-row: 3;
+			}
+			.back .info:not(:first-of-type):before {
+				content: '';
+				position: absolute;
+				left: -0.9em;
+				height: 18px;
+				width: 1px;
+				background-color: #ccc;
+			}
+			.back .info span {
+				font-size: 2em;
+				font-weight: 700;
+			}
+			.back .info a {
+				font-size: 2.2em;
+			}
+			.back .info a:before {
+				background: linear-gradient(40deg, #355cc9, #438af3);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+			}
+			.back .info .icon {
+				margin-left: 0.3em;
+			}
+			.back .info .icon span {
+				display: block;
+				margin-top: -0.25em;
+				font-size: 0.8em;
+				font-weight: 600;
+				white-space: nowrap;
+			}
+			.back .description {
+				grid-row: 5;
+				grid-column: 1/-1;
+				font-size: 0.86em;
+				border-radius: 5px;
+				font-weight: 600;
+				line-height: 1.4em;
+				overflow: auto;
+				color: #355cc9;
+				padding-right: 10px;
+			}
+			
+			.back .button {
+				grid-column: 1/-1;
+				justify-self: center;
+			}
+
+			.button {
+				grid-row: -1;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				background-color: #fff !important;
+				cursor: pointer;
+				display: block;
+				padding: 0 1.5em;
+				height: 3em;
+				line-height: 2.9em;
+				min-width: 3em;
+				background-color: transparent;
+				border: solid 2px royalblue;
+				color: royalblue !important;
+				border-radius: 4px;
+				text-align: center;
+				left: 50%;
+				backface-visibility: hidden;
+				transition: 0.3s ease-in-out;
+				font-weight: 900;
+				box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+			}
+			.button:hover {
+				text-shadow: none;
+				box-shadow: none;
+				color: #355cc9 !important;
+				padding: 0em 2.5em;
+			}
+			.button.return {
+				line-height: 3em;
+				color: #355cc9 !important;
+				border-color: #355cc9 !important;
+				text-shadow: none;
+			}
+			.button.return:hover {
+				background-color: #355cc9;
+				color: #fff;
+				box-shadow: none;
+			}
+
+			::-webkit-scrollbar {
+				width: 5px;
+			}
+
+			::-webkit-scrollbar-track {
+				background: #f1f1f1;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: #859ddf;
+			}
+
+			::-webkit-scrollbar-thumb:hover {
+				background: #355cc9;
+			}
+
+			#wrapper {
+				opacity:0;
+				animation: opac 2s 1.2s forwards;
+			}
+
+			@keyframes opac {
+				from {opacity:0;}
+				to {opacity: 1;}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				<!-- Header -->
+				<header id="header" class="alt">
+					<h1><a href="index.html">KIIT Robotics Society</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="aboutus.html">About us</a></li>
+								
+								<li><a href="events.html">Events</a></li>
+								<li><a href="members.html">Members</a></li>
+								
+								<li><a href="developers.html">Credits</a></li>
+								<li><a href="achievements.html">Achievements <span class="icon fa-gem"></span></a></li>
+								<li><a href="results.html">RECRUITMENT 2020</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<div class="logo">
+								<img style="height:40px; border-radius: 50%;" src="images/krslogo.jpg">
+                                <h2>Credits</h2>
+							</div>
+							
+						</div>
+					</section>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<h2>Supervisors</h2>
+						<div class="wrapper-prof">
+							<div class="card">
+								<input type="checkbox" id="card1" class="more" aria-hidden="true">
+								<div class="content">
+									<div class="front" style="background-image: url('images-members/min/aryabratasahoo-01.jpg')">
+										<div class="inner">
+											<h3>Aryabrata Sahoo</h3>
+											<label for="card1" class="button" aria-hidden="true">
+												Details
+											</label>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner" style="text-align: center;">
+											
+											<div class="info">
+												<div class="icon">
+													<a href="https://www.linkedin.com/in/aryabrata-sahoo-476603153" class="fa fa-linkedin"></a>
+												</div>
+											</div>
+											<div class="description">
+												<p>Experienced Coordinator with a Demonstrated history of working in the field of loT. Skilled in System on a Chip (SOC), PSoC, Programming in C, Data Structure, Event Management and Strong Professional.</p>
+											</div>
+											
+											<label for="card1" class="button return" aria-hidden="true">
+												<i class="fas fa-arrow-left"></i>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<input type="checkbox" id="card2" class="more" aria-hidden="true">
+								<div class="content">
+									<div class="front" style="background-image: url('images-members/min/shreyshah-01.jpg')">
+										<div class="inner">
+											<h3>Shrey Shah</h3>
+											<label for="card2" class="button" aria-hidden="true">
+												Details
+											</label>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner" style="text-align: center;">
+											
+											<div class="info">
+												<div class="icon">
+													<a href="https://www.linkedin.com/in/shrey-chirag-shah-63a74b167/" class="fa fa-linkedin"></a>
+												</div>
+											</div>
+											<div class="description">
+												<p>I'm a quick learner who is ready to explore new fields of technology and always curious about things. I'm always ready to take up responsibilities.</p>
+											</div>
+											
+											<label for="card2" class="button return" aria-hidden="true">
+												<i class="fas fa-arrow-left"></i>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<input type="checkbox" id="card5" class="more" aria-hidden="true">
+								<div class="content">
+									<div class="front" style="background-image: url('images-members/min/anwitachakraborty-01.jpg')">
+										<div class="inner">
+											<h3>Anwita Chakraborty</h3>
+											<label for="card5" class="button" aria-hidden="true">
+												Details
+											</label>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner" style="text-align: center;">
+											
+											<div class="info">
+												<div class="icon">
+													<a href="https://www.linkedin.com/in/anwita-chakraborty-10326b167/" class="fa fa-linkedin"></a>
+													<a href="https://www.instagram.com/_._my_sketchbook_._/?hl=en" class="fa fa-instagram"></a>
+												</div>
+											</div>
+											<div class="description">
+												<p>Millenial with an old school vibe.Passionately in love with technology,paintings and movies.</p>
+											</div>
+											
+											<label for="card5" class="button return" aria-hidden="true">
+												<i class="fas fa-arrow-left"></i>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<h2>Web Developers</h2>
+						<div class="wrapper-prof">
+							<div class="card">
+								<input type="checkbox" id="card3" class="more" aria-hidden="true">
+								<div class="content">
+									<div class="front" style="background-image: url('images-members/min/rupeshpal-01.jpg')">
+										<div class="inner">
+											<h3>Rupesh Pal</h3>
+											<label for="card3" class="button" aria-hidden="true">
+												Details
+											</label>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner" style="text-align: center;">
+											
+											<div class="info">
+												<div class="icon">
+													<a href="https://www.linkedin.com/in/rupesh-pal-275459163/" class="fa fa-linkedin"></a>
+													<a href="https://www.linkedin.com/in/rupesh-pal-275459163/" class="fa fa-github"></a>
+												</div>
+											</div>
+											<div class="description">
+												<p>Hi, I am a professional Web Developer having 4 months of work experience, and an IOT enthusiast</p>
+											</div>
+											
+											<label for="card3" class="button return" aria-hidden="true">
+												<i class="fas fa-arrow-left"></i>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<input type="checkbox" id="card4" class="more" aria-hidden="true">
+								<div class="content">
+									<div class="front" style="background-image: url('images-members/min/rupamganguly-01.jpg')">
+										<div class="inner">
+											<h3>Rupam Ganguli</h3>
+											<label for="card4" class="button" aria-hidden="true">
+												Details
+											</label>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner" style="text-align: center;">
+											
+											<div class="info">
+												<div class="icon">
+													<a href="https://www.linkedin.com/in/rupam-ganguli-70b4451a2/" class="fa fa-linkedin"></a>
+													<a href="https://github.com/Im-RG" class="fa fa-github"></a>
+												</div>
+											</div>
+											<div class="description">
+												<p>An online privacy conscious guy, plays music, gathers knowledge from all trades, Love keeping things simple yet fascinating.</p>
+											</div>
+											
+											<label for="card4" class="button return" aria-hidden="true">
+												<i class="fas fa-arrow-left"></i>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<h2>Content Editors</h2>
+						<div class="wrapper-prof">
+							
+							<div class="card">
+								<input type="checkbox" id="card6" class="more" aria-hidden="true">
+								<div class="content">
+									<div class="front" style="background-image: url('images-members/min/archishmitadutta-01.jpg')">
+										<div class="inner">
+											<h3>ARCHISMITA DUTTA</h3>
+											<label for="card6" class="button" aria-hidden="true">
+												Details
+											</label>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner" style="text-align: center;">
+											
+											<div class="info">
+												<div class="icon">
+													
+												</div>
+											</div>
+											<div class="description">
+												<p>I'm a technology enthusiast,  who tries to keep learning in every possible way.</p>
+											</div>
+											
+											<label for="card6" class="button return" aria-hidden="true">
+												<i class="fas fa-arrow-left"></i>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<h2>Graphic Designer</h2>
+						<div class="wrapper-prof" style="margin-bottom: 150px">
+							<div class="card">
+								<input type="checkbox" id="card7" class="more" aria-hidden="true">
+								<div class="content">
+									<div class="front" style="background-image: url('images-members/min/aviksikder-01.jpg')">
+										<div class="inner">
+											<h3>Avik Sikder</h3>
+											<label for="card7" class="button" aria-hidden="true">
+												Details
+											</label>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner" style="text-align: center;">
+											
+											<div class="info">
+												<div class="icon">
+													<a href="https://www.linkedin.com/in/avik-sikder-25005a1a7" class="fa fa-linkedin"></a>
+												</div>
+											</div>
+											<div class="description">
+												<p>I am a techie with a particular interest and n android development and UI/UX.</p>
+											</div>
+											
+											<label for="card7" class="button return" aria-hidden="true">
+												<i class="fas fa-arrow-left"></i>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<ul class="contact">
+								<li class="icon solid fa-home">
+									KIIT Robotics Society<br />
+									Registered by KSAC, KIIT University<br />
+									Odisha 751024
+								</li>
+
+								<li class="icon solid fa-envelope"><a href="mailto:robotics.society@kiit.ac.in">Email</a></li>
+								<li class="icon brands fa-twitter"><a href="https://mobile.twitter.com/kiit_krs">Twitter</a></li>
+								<li class="icon brands fa-facebook-f"><a href="https://www.facebook.com/kiitroboticssociety/">Facebook</a></li>
+								<li class="icon brands fa-instagram"><a href="https://instagram.com/kiit_robotics.society">Instagram</a></li>
+							</ul>
+						</div>
+					</section>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
